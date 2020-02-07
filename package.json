@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "electron": "^8.0.0",
+    "qrcode": "^1.4.4"
+  },
+  "name": "QRCode-Generator",
+  "version": "1.0.0",
+  "description": "Electron QRCode Image Generator",
+  "main": "index.js",
+  "repository": "https://github.com/Beramo14/Electron-QRCode-Generator.git",
+  "author": "Beramo",
+  "license": "MIT"
+}
