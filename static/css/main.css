@@ -1,10 +1,10 @@
 .left-box {
     float: left;
-    width: 50%;
+    width: 45%;
 }
 .right-box {
     float: right;
-    width: 50%;
+    width: 55%;
 }
 
 .box{
@@ -17,7 +17,11 @@ div.box-wrap{
     height:100%;
 }
 
-.qr-preview{
-    margin: 10px 0;
+#qr-preview{
+    margin: 10px 10px;
     border: 2px solid #eeeeee;
+    width: 99%;
+}
+#qr-img{
+    width: 100%;
 }

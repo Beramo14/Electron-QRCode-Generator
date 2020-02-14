@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self'; style-src 'self' 'unsafe-inline';">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline';">
     <link rel="stylesheet" href="css/main.css">
     <style>
         body {
@@ -16,11 +16,20 @@
     <div class="box-wrap">
         <div class="box left-box">
             <div id="qr-preview">
+                <img id="qr-img" src style="display:none;"/>
+            </div>
+            <div id="control-buttons-qr">
 
             </div>
         </div>
         <div class="box right-box">
             <h1>test</h1>
+            <div id="qr-target-list">
+
+            </div>
+            <div id="control-buttons-list">
+                <button id="test-button">test btn</button>
+            </div>
         </div>
     </div>
 
