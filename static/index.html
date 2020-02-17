@@ -15,20 +15,23 @@
 <body>
     <div class="box-wrap">
         <div class="box left-box">
-            <div id="qr-preview">
-                <img id="qr-img" src style="display:none;"/>
-            </div>
-            <div id="control-buttons-qr">
-
+            <div class="innerBox">
+                <div id="qr-preview">
+                    <img id="qr-img" src style="display:none;"/>
+                </div>
+                <div id="control-buttons-qr">
+                </div>
             </div>
         </div>
         <div class="box right-box">
-            <h1>test</h1>
-            <div id="qr-target-list">
-
-            </div>
-            <div id="control-buttons-list">
-                <button id="test-button">test btn</button>
+            <div class="innerBox">
+                <h3 id="menu-title">단일 생성</h3>
+                <div id="qr-target-list">
+                </div>
+                <input type="text" id="url-input" placeholder="URL">
+                <button type="button" id="QRCode-generate-button">생성</button>
+                        <div id="control-buttons-list">
+                </div>
             </div>
         </div>
     </div>

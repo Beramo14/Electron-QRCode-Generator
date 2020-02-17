@@ -43,11 +43,11 @@ function ipcMainEventHandler(){
         margin: 5
     }
 
-    ipcMain.on('message-test',(event, arg) => {
+    ipcMain.on('QRCodeCh',(event, arg) => {
         console.log(arg);
 
         qrcode.toDataURL(arg, qrOption, function(err, arg){
-            event.sender.send("message-test", arg);
+            event.sender.send("QRCodeCh", arg);
         });
 
     });
