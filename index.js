@@ -2,12 +2,14 @@ const{app, BrowserWindow, ipcMain} = require('electron');
 const qrcode = require('qrcode');
 const path = require("path");
 const fs = require("fs");
+
 let mainWindow;
 
 function createWindow(){
     mainWindow = new BrowserWindow({
-        width: 650,
-        height: 400,
+        title: 'QRCode Generator',
+        width: 660,
+        height: 370,
         resizable: false,
         webPreferences: {
             nodeIntegration: false,
