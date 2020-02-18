@@ -1,13 +1,19 @@
-.left-box {
-    float: left;
-    width: 45%;
-}
-.right-box {
-    float: right;
-    width: 55%;
+body {
+    margin:0;
+    width:100vw;
+    height:100vh;
 }
 
-.box{
+div.left-box {
+    float: left;
+    width: 47%;
+}
+div.right-box {
+    float: right;
+    width: 53%;
+}
+
+div.box{
     height:100%;
     /* box-sizing: border-box; */
 }
@@ -22,12 +28,27 @@ div.innerBox{
 
 #qr-preview{
     border: 2px solid #eeeeee;
-    width: 265px;
-    height: 265px;
+    margin: 5px;
+    width: 280px;
+    height: 280px;
+}
+#control-buttons-qr{
+    margin: 6px;
 }
 #qr-img{
     width: 100%;
 }
 h3#menu-title{
     margin-top: 10px;
+}
+
+input#url-input{
+    width:270px;
+}
+
+div#menu-select-buttons{
+    margin-bottom: 10px;
+}
+div#menu-select-buttons div.btn-group{
+    width:100%;
 }

@@ -4,13 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="default-src *; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline';">
     <link rel="stylesheet" href="css/main.css">
-    <style>
-        body {
-            margin:0;
-            width:100vw;
-            height:100vh;
-        }
-    </style>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
     <div class="box-wrap">
@@ -18,24 +12,45 @@
             <div class="innerBox">
                 <div id="qr-preview">
                     <img id="qr-img" src style="display:none;"/>
+                    <input type="hidden" id="thisQrText"/>
                 </div>
-                <div id="control-buttons-qr">
+                <div id="control-buttons-qr" class="m-1">
+                    <button type="button" id="qr-image-save" class="btn btn-sm btn-success">파일 저장</button>
                 </div>
             </div>
         </div>
         <div class="box right-box">
             <div class="innerBox">
-                <h3 id="menu-title">단일 생성</h3>
-                <div id="qr-target-list">
+                <div id="menu-select-buttons">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary active">
+                            <input type="radio" name="options" id="option1" checked> 단일변환
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="options" id="option2"> 일괄변환
+                        </label>
+                      </div>
                 </div>
-                <input type="text" id="url-input" placeholder="URL">
-                <button type="button" id="QRCode-generate-button">생성</button>
+                <div id="menu-display">
+                    <div id="single-generate">
+                        <div class="form-inline">
+                            <input type="text" id="url-input" class="form-control" placeholder="URL 또는 텍스트를 입력">
+                            <button type="button" id="QRCode-generate-button" class="btn btn-primary ml-auto">생성</button>
+                        </div>
                         <div id="control-buttons-list">
+                        </div>
+                    </div>
+                    <div id="batch-generate">
+                        <div id="qr-target-list">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
