@@ -1,3 +1,4 @@
+
 /*---------- QRCode 단일 생성 ----------*/
 document.querySelector("#QRCode-generate-button").addEventListener('click', () => {
     var qrcodeTarget = document.querySelector("#url-input").value;
@@ -21,4 +22,18 @@ ipcRenderer.on("QRCodeCh", (event, arg) => {
     var qrImg = document.querySelector("#qr-img");
     qrImg.setAttribute("src", arg);
     qrImg.removeAttribute("style");
+});
+
+
+/*---------- 단일생성 클릭 ----------*/
+document.querySelector("#single-generate-button").addEventListener('click', () => {
+    console.log("Single");
+    document.querySelector("#batch-generate").style.display = 'none';
+    document.querySelector("#single-generate").style.display = 'block';
+});
+/*---------- 일괄생성 클릭 ----------*/
+document.querySelector("#batch-generate-button").addEventListener('click', () => {
+    console.log("Batch");
+    document.querySelector("#single-generate").style.display = 'none';
+    document.querySelector("#batch-generate").style.display = 'block';
 });
