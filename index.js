@@ -39,6 +39,8 @@ app.allowRendererProcessReuse = true;
 
 
 
+
+
 function ipcMainEventHandler(mainWindow){
     var qrGenerateOption = {
         errorCorrectionLevel:'L',
@@ -51,13 +53,14 @@ function ipcMainEventHandler(mainWindow){
         title: "Save Qr Image",
         filters: [{name: "이미지 형식", extensions: ['png']}]
     }
-
+    
     var qrSaveSuccessDialogOption = {
         type: "info",
         message: "파일저장에 성공하였습니다."
     }
 
 
+    /*---------- 이미지 생성후 preview로 전달 ----------*/
     ipcMain.on('QRCodeCh',(event, arg) => {
         console.log("Target Text : " + arg);
         qrcode.toDataURL(arg, qrGenerateOption, function(err, arg){
@@ -65,15 +68,19 @@ function ipcMainEventHandler(mainWindow){
         });
     });
 
+    /*---------- QR코드 이미지 저장 ----------*/
     ipcMain.on('QRCodeSaveCh', (event, arg) => {
         console.log("" + arg);
+        qrSaveDialogOption.defaultPath = arg;
         var path = dialog.showSaveDialogSync(mainWindow, qrSaveDialogOption);
-        console.log(path);
-        qrcode.toFile(path, arg, qrGenerateOption, function(err){
-            if(err) throw err;
-            var dialogStatus = dialog.showMessageBoxSync(mainWindow, qrSaveSuccessDialogOption);
-            console.log(dialogStatus);
-        })
+        if(path != undefined){
+            console.log("Image save path : " + path);
+            qrcode.toFile(path, arg, qrGenerateOption, function(err){
+                if(err) throw err;
+                var dialogStatus = dialog.showMessageBoxSync(mainWindow, qrSaveSuccessDialogOption);
+                console.log(dialogStatus);
+            });
+        }
     });
 
 }
