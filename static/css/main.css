@@ -6,11 +6,11 @@ body {
 
 div.left-box {
     float: left;
-    width: 47%;
+    width: 46%;
 }
 div.right-box {
     float: right;
-    width: 53%;
+    width: 54%;
 }
 
 div.box{
@@ -23,17 +23,17 @@ div.box-wrap{
     height: 100%;
 }
 div.innerBox{
-    margin: 5px;
+    margin: 10px;
 }
 
 #qr-preview{
+    margin-top: 10px;;
     border: 2px solid #eeeeee;
-    margin: 5px;
     width: 280px;
     height: 280px;
 }
 #control-buttons-qr{
-    margin: 6px;
+    margin-top: 10px;
 }
 #qr-img{
     width: 100%;
