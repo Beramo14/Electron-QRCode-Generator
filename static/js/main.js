@@ -27,13 +27,13 @@ ipcRenderer.on("QRCodeCh", (event, arg) => {
 
 /*---------- 단일생성 클릭 ----------*/
 document.querySelector("#single-generate-button").addEventListener('click', () => {
-    console.log("Single");
+    logger.info("Single generate btn clicked");
     document.querySelector("#batch-generate").style.display = 'none';
     document.querySelector("#single-generate").style.display = 'block';
 });
 /*---------- 일괄생성 클릭 ----------*/
 document.querySelector("#batch-generate-button").addEventListener('click', () => {
-    console.log("Batch");
+    logger.log("Batch generate btn clicked");
     document.querySelector("#single-generate").style.display = 'none';
     document.querySelector("#batch-generate").style.display = 'block';
 });

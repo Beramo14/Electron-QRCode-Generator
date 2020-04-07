@@ -1,4 +1,5 @@
 const{app, BrowserWindow, ipcMain, dialog} = require('electron');
+const logger = require("electron-log");
 const qrcode = require('qrcode');
 const path = require("path");
 const fs = require("fs");
@@ -17,11 +18,11 @@ function createWindow(){
         }
     });
 
-    console.log(path.join(__dirname, "preload.js"));
 
     // mainWindow.loadURL(`file://${__dirname}/static/index.html`);
     mainWindow.loadFile(path.join(__dirname, "static/index.html"));
     mainWindow.on('closed', () =>{
+        logger.info("--- Main Window is on closed ---");
         mainWindow = null;
     });
     mainWindow.openDevTools();
@@ -32,6 +33,7 @@ function createWindow(){
 }
 
 app.on('ready', () =>{
+    logger.info("--- application is on ready ---");
     createWindow();
 });
 
@@ -62,7 +64,7 @@ function ipcMainEventHandler(mainWindow){
 
     /*---------- 이미지 생성후 preview로 전달 ----------*/
     ipcMain.on('QRCodeCh',(event, arg) => {
-        console.log("Target Text : " + arg);
+        logger.log("Target Text : " + arg);
         qrcode.toDataURL(arg, qrGenerateOption, function(err, arg){
             event.sender.send("QRCodeCh", arg);
         });
@@ -74,11 +76,7 @@ function ipcMainEventHandler(mainWindow){
         qrSaveDialogOption.defaultPath = arg;
         var path = dialog.showSaveDialogSync(mainWindow, qrSaveDialogOption);
         if(path != undefined){
-            console.log("Image save path : " + path);
-            qrcode.toFile(path, arg, qrGenerateOption, function(err){
-                if(err) throw err;
-                var dialogStatus = dialog.showMessageBoxSync(mainWindow, qrSaveSuccessDialogOption);
-                console.log(dialogStatus);
+            logger.log("Image save SUCCESS! : " + path);
             });
         }
     });
