@@ -85,12 +85,14 @@ function ipcMainEventHandler(mainWindow){
             qrcode.toFile(path, saveFileName, qrGenerateOption, function(err){
                 if(err){
                     logger.error(err);
-                    dialog.showMessageBoxSync(mainWindow);
+                    dialog.showMessageBoxSync(mainWindow, qrSaveErrorDialogOption);
                     throw err;
+                } else {
+                    var dialogStatus = dialog.showMessageBoxSync(mainWindow, qrSaveSuccessDialogOption);
                 }
-                var dialogStatus = dialog.showMessageBoxSync(mainWindow, qrSaveErrorDialogOption);
-                //logger.log(dialogStatus);
             });
+        } else if(path == undefined){
+            logger.log("Path not selected. (" + arg + ")");
         }
     });
 
