@@ -1,2 +1,4 @@
 window.ipcRenderer = require('electron').ipcRenderer;
-console.log("Preloaded!");
+const logger = require('electron-log');
+window.logger = logger;
+logger.log("Preloaded!");

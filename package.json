@@ -2,6 +2,7 @@
   "dependencies": {
     "bootstrap": "^4.4.1",
     "electron": "^8.0.0",
+    "electron-log": "^4.1.1",
     "jquery": "^3.4.1",
     "popper.js": "1.16.0",
     "qrcode": "^1.4.4"
