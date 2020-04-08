@@ -3,6 +3,7 @@ const logger = require("electron-log");
 const qrcode = require('qrcode');
 const path = require("path");
 const fs = require("fs");
+const XLSX = require("xlsx");
 
 let mainWindow;
 

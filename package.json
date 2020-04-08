@@ -5,7 +5,8 @@
     "electron-log": "^4.1.1",
     "jquery": "^3.4.1",
     "popper.js": "1.16.0",
-    "qrcode": "^1.4.4"
+    "qrcode": "^1.4.4",
+    "xlsx": "^0.15.6"
   },
   "name": "QRCode-Generator",
   "version": "1.0.0",
