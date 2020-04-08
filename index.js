@@ -33,13 +33,16 @@ function createWindow(){
 
 }
 
+
+app.allowRendererProcessReuse = true;
 app.on('ready', () =>{
     logger.info("--- application is on ready ---");
     createWindow();
 });
-
-app.allowRendererProcessReuse = true;
-
+app.on('window-all-closed', () => {
+    logger.info("--- application is on closed ---");
+    app.quit()
+});
 
 
 
