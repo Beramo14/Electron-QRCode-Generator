@@ -10,8 +10,8 @@ let mainWindow;
 function createWindow(){
     mainWindow = new BrowserWindow({
         title: 'QRCode Generator',
-        width: 670,
-        height: 380,
+        width: 700,
+        height: 400,
         resizable: false,
         webPreferences: {
             nodeIntegration: false,
