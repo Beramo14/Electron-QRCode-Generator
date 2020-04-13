@@ -79,14 +79,15 @@ function ipcMainEventHandler(mainWindow){
     });
 
     /*---------- QR코드 이미지 저장 ----------*/
-    ipcMain.on('QRCodeSaveCh', (event, arg) => {
-        logger.log("Save QR Image : " + arg);
-        var saveFileName = arg + ".png";
-        qrSaveDialogOption.defaultPath = saveFileName;
+    ipcMain.on('QRCodeSaveCh', (event, qrTargetText, qrSaveFileNm) => {
+        qrSaveFileNm = (qrSaveFileNm)? qrSaveFileNm + ".png" : qrTargetText + ".png";
+        logger.log("Save QR Image : " + qrTargetText, qrSaveFileNm);
+
+        qrSaveDialogOption.defaultPath = qrSaveFileNm;
         var path = dialog.showSaveDialogSync(mainWindow, qrSaveDialogOption);
         if(path != undefined){
             logger.log("Image save SUCCESS! : " + path);
-            qrcode.toFile(path, saveFileName, qrGenerateOption, function(err){
+            qrcode.toFile(path, qrTargetText, qrGenerateOption, function(err){
                 if(err){
                     logger.error(err);
                     dialog.showMessageBoxSync(mainWindow, qrSaveErrorDialogOption);
