@@ -12,8 +12,10 @@ document.querySelector("#QRCode-generate-button").addEventListener('click', () =
 /*---------- 현재 QRCode 이미지파일로 저장 ----------*/
 document.querySelector('#qr-image-save').addEventListener('click', () =>{
     var qrcodeTarget = document.querySelector("#thisQrText").value;
+    var qrcodeFileNm = document.querySelector("#thisQrFileNm").value;
+
     if(qrcodeTarget){
-        ipcRenderer.send("QRCodeSaveCh", qrcodeTarget);
+        ipcRenderer.send("QRCodeSaveCh", qrcodeTarget, qrcodeFileNm);
     }
 });
 
