@@ -6,11 +6,11 @@ body {
 
 div.left-box {
     float: left;
-    width: 46%;
+    width: 45%;
 }
 div.right-box {
     float: right;
-    width: 54%;
+    width: 55%;
 }
 
 div.box{
@@ -27,7 +27,7 @@ div.innerBox{
 }
 
 #qr-preview{
-    margin-top: 10px;
+    margin-top: 30px;
     border: 2px solid #eeeeee;
     width: 280px;
     height: 280px;
@@ -43,7 +43,7 @@ h3#menu-title{
 }
 
 input#url-input{
-    width:270px;
+    width: 270px;
 }
 
 div#menu-select-buttons{
@@ -51,4 +51,50 @@ div#menu-select-buttons{
 }
 div#menu-select-buttons div.btn-group{
     width:100%;
+}
+
+div#batch-generate > div#excel-select-wrapper{
+    margin-bottom: 5px;
+}
+
+div#batch-generate > div#qr-target-list{
+    height: 211px;
+    border: 2px solid #eeeeee;
+}
+
+div#batch-generate > div#qr-target-list > table{
+    border-spacing: 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+table#qr-target-list-table > thead{
+    text-align: center;
+    width: calc( 100% - 1.5em );
+}
+table#qr-target-list-table > tbody{
+    display: block;
+    height: 190px;
+    overflow-y: auto;
+}
+
+table#qr-target-list-table tr:hover{
+    background-color: #eeeeee;
+}
+table#qr-target-list-table tr{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+table#qr-target-list-table td, table#qr-target-list-table  th{
+    border: 1px solid #eeeeee;
+}
+table#qr-target-list-table th{
+    background-color: lightgray;
+}
+table#qr-target-list-table td:nth-child(1), table#qr-target-list-table th:nth-child(1) {
+    width: 220px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }

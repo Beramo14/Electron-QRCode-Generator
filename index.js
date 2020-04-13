@@ -97,8 +97,53 @@ function ipcMainEventHandler(mainWindow){
                 }
             });
         } else if(path == undefined){
-            logger.log("Path not selected. (" + arg + ")");
+            logger.log("Path not selected. (qrTargetText : " + qrTargetText + ",  qrSaveFileNm : " + qrSaveFileNm + ")");
+        }
+    });
+
+    
+    var excelFileSelectDialogOption = {
+        filters: [{name: "엑셀 파일", extensions: ['xlsx', 'xlsm', 'xls']}]
+    };
+
+    /*---------- 일괄 Excel파일 선택 ----------*/
+    ipcMain.on('ExcelFileSelectAndReadCh', (event) => {
+        var path = dialog.showOpenDialogSync(mainWindow, excelFileSelectDialogOption);
+        if(path != undefined){
+            logger.log("Excel Path : " + path[0]);
+            var resultMap = {};
+
+            var workbook = XLSX.readFile(path[0]);
+            var workSheet = workbook.Sheets[workbook.SheetNames[0]];
+            var jsonData = XLSX.utils.sheet_to_json(workSheet);
+            logger.log(jsonData);
+
+            resultMap.jsonData = jsonData;
+            resultMap.filePath = path[0];
+
+            event.returnValue = resultMap;
+        } else {
+            event.returnValue = "FileNotSelect";
+        }
+    });
+
+
+
+    ipcMain.on('QRCodeBatchSaveCh', (event, qrInfoList) => {
+        logger.log(qrInfoList);
+        const path = dialog.showOpenDialogSync(mainWindow, {
+            properties: ['openDirectory']
+        });
+        if(path != null){
+            logger.log("path : " + path);
+            for(var row of qrInfoList){
+                logger.log(row["URL 또는 텍스트"], row["저장 파일 명"]);
+                var savePath = path[0] + row["저장 파일 명"] + ".png";
+                qrcode.toFile(savePath, row["URL 또는 텍스트"], qrGenerateOption);
+            }
         }
     });
 
 }
+
+
