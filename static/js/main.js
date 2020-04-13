@@ -3,6 +3,7 @@
 document.querySelector("#QRCode-generate-button").addEventListener('click', () => {
     var qrcodeTarget = document.querySelector("#url-input").value;
     if(qrcodeTarget){
+        qrInfoInputReset();
         ipcRenderer.send("QRCodeCh", qrcodeTarget);
         document.querySelector('#thisQrText').value = qrcodeTarget;
     }
@@ -37,3 +38,8 @@ document.querySelector("#batch-generate-button").addEventListener('click', () =>
     document.querySelector("#single-generate").style.display = 'none';
     document.querySelector("#batch-generate").style.display = 'block';
 });
+
+function qrInfoInputReset(){
+    document.querySelector("#thisQrText").value = null;
+    document.querySelector("#thisQrFileNm").value = null;
+}
