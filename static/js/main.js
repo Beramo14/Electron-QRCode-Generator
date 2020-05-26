@@ -25,7 +25,9 @@ document.querySelector('#qr-image-save').addEventListener('click', () =>{
 /*---------- QR 이미지 출력 ----------*/
 ipcRenderer.on("QRCodeCh", (event, arg) => {
     var qrImg = document.querySelector("#qr-img");
+    var qrcodeTarget = document.querySelector("#url-input").value;
     qrImg.setAttribute("src", arg);
+    qrImg.setAttribute("alt", qrcodeTarget);
     qrImg.removeAttribute("style");
 });
 
