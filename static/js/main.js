@@ -60,8 +60,8 @@ document.querySelector("#excel-select-button").addEventListener('click', () => {
 
         $("#qr-target-list-table > tbody").html("");
         for(const row of jsonData){
-            logger.log(row);
-            $("#qr-target-list-table > tbody").append("<tr><td>"+row["URL 또는 텍스트"]+"</td><td>"+row["저장 파일 명"]+"</td></tr>");
+            var rowKeys = Object.keys(row);
+            $("#qr-target-list-table > tbody").append("<tr><td>"+row[rowKeys[0]]+"</td><td>"+row[rowKeys[1]]+"</td></tr>");
         }
         $("#qr-target-list-table").show();
 
