@@ -130,16 +130,31 @@ function ipcMainEventHandler(mainWindow){
 
 
     ipcMain.on('QRCodeBatchSaveCh', (event, qrInfoList) => {
+        var successCount = 0;
         logger.log(qrInfoList);
         const path = dialog.showOpenDialogSync(mainWindow, {
             properties: ['openDirectory']
         });
         if(path != null){
             logger.log("path : " + path);
+            var listLength = qrInfoList.length;
             for(var row of qrInfoList){
-                logger.log(row["URL 또는 텍스트"], row["저장 파일 명"]);
-                var savePath = path[0] + row["저장 파일 명"] + ".png";
-                qrcode.toFile(savePath, row["URL 또는 텍스트"], qrGenerateOption);
+                var listKeys = Object.keys(row);
+                logger.log(row[listKeys[0]], row[listKeys[1]]);
+                var savePath = path[0] + "/" + row["저장 파일 명"] + ".png";
+                qrcode.toFile(savePath, row["URL 또는 텍스트"], qrGenerateOption, function(err){
+                    if(err){
+                        logger.error(err);
+                        dialog.showMessageBoxSync(mainWindow, qrSaveErrorDialogOption);
+                        throw err;
+                    }
+                });
+                successCount++;
+            }
+            if(listLength == successCount){
+                var dialogStatus = dialog.showMessageBoxSync(mainWindow, qrSaveSuccessDialogOption);
+            } else { 
+                dialog.showMessageBoxSync(mainWindow, qrSaveErrorDialogOption);
             }
         }
     });
