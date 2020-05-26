@@ -49,7 +49,7 @@ app.on('window-all-closed', () => {
 
 function ipcMainEventHandler(mainWindow){
     var qrGenerateOption = {
-        errorCorrectionLevel: 'L',
+        errorCorrectionLevel: 'M',
         type: 'image/png',
         scale: 19,
         margin: 5
