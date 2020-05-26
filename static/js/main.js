@@ -36,12 +36,14 @@ ipcRenderer.on("QRCodeCh", (event, arg) => {
 document.querySelector("#single-generate-button").addEventListener('click', () => {
     logger.info("Single generate btn clicked");
     document.querySelector("#batch-generate").style.display = 'none';
+    document.querySelector("#qr-batch-save").style.display = 'none';
     document.querySelector("#single-generate").style.display = 'block';
 });
 /*---------- 일괄생성 클릭 ----------*/
 document.querySelector("#batch-generate-button").addEventListener('click', () => {
     logger.log("Batch generate btn clicked");
     document.querySelector("#single-generate").style.display = 'none';
+    document.querySelector("#qr-batch-save").style.display = 'inline-block';
     document.querySelector("#batch-generate").style.display = 'block';
 });
 
