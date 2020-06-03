@@ -60,12 +60,12 @@ function ipcMainEventHandler(mainWindow){
         filters: [{name: "이미지 형식", extensions: ['png']}]
     }
     
-    var qrSaveSuccessDialogOption = {
+    const qrSaveSuccessDialogOption = {
         type: "info",
         message: "파일저장에 성공하였습니다."
     }
 
-    var qrSaveErrorDialogOption = {
+    const qrSaveErrorDialogOption = {
         type: "error",
         message: "파일저장에 실패하였습니다."
     }
